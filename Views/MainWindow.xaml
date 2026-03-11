@@ -27,8 +27,7 @@
             <Setter Property="Background" Value="#0C0052" />
             <Setter Property="Foreground" Value="#FFFFFF" />
             <Setter Property="BorderThickness" Value="0" />
-            <Setter Property="Padding" Value="8" />
-            <Setter Property="Height" Value="46" />
+            <Setter Property="Padding" Value="4" />
             <Setter Property="FontSize" Value="16" />
             <Setter Property="FontWeight" Value="Normal" />
             <Setter Property="Template">
@@ -43,7 +42,6 @@
             <Style.Triggers>
                 <DataTrigger Binding="{Binding IsExpanded}" Value="True">
                     <Setter Property="Background" Value="#006A63" />
-                    <Setter Property="Height" Value="64" />
                     <Setter Property="FontSize" Value="12" />
                     <Setter Property="FontWeight" Value="Bold" />
                 </DataTrigger>
@@ -127,33 +125,31 @@
                     <RowDefinition Height="52" />
                 </Grid.RowDefinitions>
 
-                <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Margin="24,20,24,8">
-                    <ItemsControl ItemsSource="{Binding ChordTiles}">
-                        <ItemsControl.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <UniformGrid Columns="2" />
-                            </ItemsPanelTemplate>
-                        </ItemsControl.ItemsPanel>
-                        <ItemsControl.ItemTemplate>
-                            <DataTemplate DataType="{x:Type vm:ChordTileViewModel}">
-                                <Button Style="{StaticResource ChordTileButtonStyle}" Margin="6,5" Command="{Binding ToggleCommand}">
-                                    <TextBlock TextAlignment="Center" TextWrapping="Wrap" MaxWidth="120">
-                                        <TextBlock.Style>
-                                            <Style TargetType="TextBlock">
-                                                <Setter Property="Text" Value="{Binding Name}" />
-                                                <Style.Triggers>
-                                                    <DataTrigger Binding="{Binding IsExpanded}" Value="True">
-                                                        <Setter Property="Text" Value="{Binding ExpandedText}" />
-                                                    </DataTrigger>
-                                                </Style.Triggers>
-                                            </Style>
-                                        </TextBlock.Style>
-                                    </TextBlock>
-                                </Button>
-                            </DataTemplate>
-                        </ItemsControl.ItemTemplate>
-                    </ItemsControl>
-                </ScrollViewer>
+                <ItemsControl ItemsSource="{Binding ChordTiles}" Margin="20,14,20,6">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <UniformGrid Columns="2" Rows="12" />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate DataType="{x:Type vm:ChordTileViewModel}">
+                            <Button Style="{StaticResource ChordTileButtonStyle}" Margin="5,4" Command="{Binding ToggleCommand}">
+                                <TextBlock TextAlignment="Center" TextWrapping="Wrap" MaxWidth="120">
+                                    <TextBlock.Style>
+                                        <Style TargetType="TextBlock">
+                                            <Setter Property="Text" Value="{Binding Name}" />
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding IsExpanded}" Value="True">
+                                                    <Setter Property="Text" Value="{Binding ExpandedText}" />
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBlock.Style>
+                                </TextBlock>
+                            </Button>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
 
                 <Grid Grid.Row="1" Margin="14,0,14,10">
                     <Grid.ColumnDefinitions>
@@ -230,19 +226,19 @@
 
                         <Border Grid.Column="0" Style="{StaticResource ResultPanelStyle}" Background="#04456B">
                             <Grid>
-                                <TextBlock Text="{Binding CreativeDisplayPath}" Foreground="White" FontSize="12" VerticalAlignment="Bottom" TextAlignment="Center" FontWeight="Bold" TextWrapping="Wrap" />
+                                <TextBlock Text="{Binding CreativeDisplayPath}" Foreground="White" FontSize="18" VerticalAlignment="Bottom" TextAlignment="Center" FontWeight="SemiBold" TextWrapping="Wrap" />
                                 <TextBlock Text="Creative" Foreground="White" FontSize="12" VerticalAlignment="Top" />
                             </Grid>
                         </Border>
                         <Border Grid.Column="2" Style="{StaticResource ResultPanelStyle}" Background="#1F0D9A">
                             <Grid>
-                                <TextBlock Text="{Binding ShortestDisplayPath}" Foreground="White" FontSize="16" VerticalAlignment="Bottom" TextAlignment="Center" FontWeight="Bold" />
+                                <TextBlock Text="{Binding ShortestDisplayPath}" Foreground="White" FontSize="20" VerticalAlignment="Bottom" TextAlignment="Center" FontWeight="Bold" />
                                 <TextBlock Text="Shortest" Foreground="White" FontSize="12" VerticalAlignment="Top" FontWeight="Bold" />
                             </Grid>
                         </Border>
                         <Border Grid.Column="4" Style="{StaticResource ResultPanelStyle}" Background="#450480">
                             <Grid>
-                                <TextBlock Text="{Binding SmoothDisplayPath}" Foreground="White" FontSize="16" VerticalAlignment="Bottom" TextAlignment="Center" FontWeight="Bold" />
+                                <TextBlock Text="{Binding SmoothDisplayPath}" Foreground="White" FontSize="18" VerticalAlignment="Bottom" TextAlignment="Center" FontWeight="SemiBold" />
                                 <TextBlock Text="Smooth" Foreground="White" FontSize="12" VerticalAlignment="Top" />
                             </Grid>
                         </Border>
@@ -291,8 +287,8 @@
                                 <ColumnDefinition Width="1*" />
                                 <ColumnDefinition Width="1.2*" />
                             </Grid.ColumnDefinitions>
-                            <Button Grid.Column="0" Style="{StaticResource BottomButtonStyle}" Content="Donation" Command="{Binding ShowDonationCommand}" Margin="18,0,18,0" />
-                            <Button Grid.Column="2" Style="{StaticResource BottomButtonStyle}" Content="{Binding NotationToggleButtonText}" Command="{Binding ClassicCommand}" Margin="18,0,18,0" />
+                            <Button Grid.Column="0" Style="{StaticResource BottomButtonStyle}" Content="Donation" Command="{Binding ShowDonationCommand}" Margin="18,0,18,0" Width="98" Height="28" HorizontalAlignment="Center" />
+                            <Button Grid.Column="2" Style="{StaticResource BottomButtonStyle}" Content="{Binding NotationToggleButtonText}" Command="{Binding ClassicCommand}" Margin="18,0,18,0" Width="98" Height="28" HorizontalAlignment="Center" />
                         </Grid>
 
                         <Grid Grid.Row="1" Margin="0,6,0,0">
@@ -301,7 +297,7 @@
                                 <ColumnDefinition Width="1*" />
                                 <ColumnDefinition Width="1.2*" />
                             </Grid.ColumnDefinitions>
-                            <Button Grid.Column="0" Style="{StaticResource BottomButtonStyle}" Content="Blocks" Background="#E500A0" Command="{Binding ShowBlocksCommand}" Margin="18,0,18,0" />
+                            <Button Grid.Column="0" Style="{StaticResource BottomButtonStyle}" Content="Blocks" Background="#E500A0" Command="{Binding ShowBlocksCommand}" Margin="18,0,18,0" Width="98" Height="28" HorizontalAlignment="Center" />
                             <Button Grid.Column="1" Width="86" Height="62" HorizontalAlignment="Center" VerticalAlignment="Center" Command="{Binding GoCommand}" BorderBrush="#E5E500" BorderThickness="2" Foreground="White" FontSize="12" FontWeight="Bold">
                                 <Button.Template>
                                     <ControlTemplate TargetType="Button">
@@ -310,9 +306,9 @@
                                         </Border>
                                     </ControlTemplate>
                                 </Button.Template>
-                                <TextBlock Text="Go" FontSize="48" FontWeight="Bold" />
+                                <TextBlock Text="Go" FontSize="24" FontWeight="Bold" />
                             </Button>
-                            <Button Grid.Column="2" Style="{StaticResource BottomButtonStyle}" Content="Clear" Command="{Binding ClearFindWayCommand}" Margin="18,0,18,0" />
+                            <Button Grid.Column="2" Style="{StaticResource BottomButtonStyle}" Content="Clear" Command="{Binding ClearFindWayCommand}" Margin="18,0,18,0" Width="98" Height="28" HorizontalAlignment="Center" />
                         </Grid>
 
                         <Grid Grid.Row="2" Margin="0,8,0,0">
